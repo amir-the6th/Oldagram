@@ -79,7 +79,14 @@ posts.forEach(p => {
     //post image, alt description
     newClone.querySelector('.post-img').setAttribute('src', p.post);
     newClone.querySelector('.post-img').setAttribute('alt', p.postAlt);
-    
+
+    //likes number, comment author, and the comment message
+    newClone.querySelector('.likes-number').textContent = `${p.likes} Likes`;
+    newClone.querySelector('.comment-message').textContent = p.comment;
+    newClone.querySelector('.comment-username').setAttribute('href', `https://instagram.com/${p.username}`);
+    newClone.querySelector('.comment-username').textContent = p.username;
+
+
     postsWrapperEl.append(newClone);
   })
 
