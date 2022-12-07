@@ -3,37 +3,42 @@
         <link rel="stylesheet" href="index.css">
     </head>
     <body>
-        <header class="fixed-width">
-            <img class="oldagram-logo" alt="Oldagram logo image" src="images/logo.png">
-            <img class="user-profile" alt="user profile image" src="images/user-avatar.png">
-        </header>
-        <main class="fixed-width">
-            <section class="post">
-                <div class="post-author-container">
-                    <img class="avatar-img" src="images/avatar-courbet.jpg" alt="avatar image of the post author">
-                    <div class="author-info">
-                        <h4 class="avatar-name">Marcus Alonso</h4>
-                        <p class="post-location">Bali, Indonesia</p>
+        <div class="main-wrapper">
+            <header>
+                <img class="oldagram-logo" alt="Oldagram logo image" src="images/logo.png">
+                <img class="user-profile" alt="user profile image" src="images/user-avatar.png">
+            </header>
+            <main class="posts-wrapper">
+            </main>
+
+            <template id="template">
+                <section class="post">
+                    <div class="post-author-container">
+                        <img class="avatar-img">
+                        <div class="author-info">
+                            <h4 class="post-name"></h4>
+                            <p class="post-location"></p>
+                        </div>
                     </div>
-                </div>
-                <div class="post-img-container">
-                    <img class="post-img" src="images/post-vangogh.jpg" alt="post image">
-                </div>
-                <div class="post-info">
-                    <div class="share-box">
-                        <img class="like-btn" src="images/icon-heart.png" alt="like button">
-                        <img class="comment-btn" src="images/icon-comment.png" alt="comment button">
-                        <img class="share-btn" src="images/icon-dm.png" alt="share button">
+                    <div class="post-img-container">
+                        <img class="post-img">
                     </div>
-                    <div class="likes-num-box">
-                        <p class="likes-number">666 Likes</p>
+                    <div class="post-info">
+                        <div class="share-box">
+                            <img class="like-btn" src="images/icon-heart.png" alt="like button">
+                            <img class="comment-btn" src="images/icon-comment.png" alt="comment button">
+                            <img class="share-btn" src="images/icon-dm.png" alt="share button">
+                        </div>
+                        <div class="likes-num-box">
+                            <p class="likes-number"></p>
+                        </div>
+                        <div class="comments-box">
+                            <p class="comment"> <a></a></p>
+                        </div>
                     </div>
-                    <div class="comments-box">
-                        <p class="comment"> <a href="">googoolTala</a> Your work is Amazing</p>
-                    </div>
-                </div>
-            </section>
-        </main>
+                </section>
+            </template>
+        </div>
         <script src="index.js"></script>
     </body>
 </html>
