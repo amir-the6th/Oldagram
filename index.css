@@ -1,11 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap');
+
 html, body {
     margin: 0;
     padding: 0;
     background-color: lightgray;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
-.fixed-width {
+.main-wrapper {
     width: 375px;
+    margin: 5em auto 0;
+}
+
+main {
+    margin-bottom: 25px;
 }
 
 header {
@@ -14,6 +22,7 @@ header {
     justify-content: space-between;
     padding: 20px 0;
     border-bottom: 1px solid lightgray;
+    border-radius: 10px 10px 0 0;
 }
 
 .oldagram-logo {
@@ -39,7 +48,7 @@ header {
 
 .author-info,
 .post-info {
-    margin-left: 10px;
+    margin: 0 10px;
 }
 
 .avatar-img {
@@ -49,7 +58,7 @@ header {
     border-radius: 50%;
 }
 
-.avatar-name {
+.post-name {
     margin: 0;
     font-size: 13px;
     font-weight: 700;
@@ -63,6 +72,10 @@ header {
 
 .post-img {
     width: 100%;
+}
+
+.post-info {
+    font-size: 13px;
 }
 
 .like-btn,
