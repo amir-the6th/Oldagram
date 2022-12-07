@@ -3,16 +3,10 @@
 html, body {
     margin: 0;
     padding: 0;
-    background-color: lightgray;
     font-family: 'Source Sans Pro', sans-serif;
 }
 
-.main-wrapper {
-    width: 375px;
-    margin: 5em auto 0;
-}
-
-main {
+section {
     margin-bottom: 25px;
 }
 
@@ -23,6 +17,11 @@ header {
     padding: 20px 0;
     border-bottom: 1px solid lightgray;
     border-radius: 10px 10px 0 0;
+}
+
+.main-wrapper {
+    width: 375px;
+    margin: 5em auto 0;
 }
 
 .oldagram-logo {
@@ -94,4 +93,30 @@ header {
     color: black;
     font-weight: 700;
     text-decoration: none;
+    margin-right: 5px;
+}
+
+.animated-bakground {
+    background: linear-gradient(335deg, #405de6, #5851d8, #c13584, #cdb4db, #ffc8dd, #f56040, #fcaf45, #ff8cb6, #bde0fe, #a2d2ff);
+    background-size: 2000% 2000%;
+
+    -webkit-animation: Amir-Gradient-Animation 30s ease infinite;
+    -moz-animation: Amir-Gradient-Animation 30s ease infinite;
+    animation: Amir-Gradient-Animation 30s ease infinite;
+}
+
+@-webkit-keyframes Amir-Gradient-Animation {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@-moz-keyframes Amir-Gradient-Animation {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@keyframes Amir-Gradient-Animation {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
 }
