@@ -2,14 +2,13 @@
     <head><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
         <link rel="stylesheet" href="index.css">
     </head>
-    <body>
+    <body class="animated-bakground">
         <div class="main-wrapper">
             <header>
                 <img class="oldagram-logo" alt="Oldagram logo image" src="images/logo.png">
                 <img class="user-profile" alt="user profile image" src="images/user-avatar.png">
             </header>
-            <main class="posts-wrapper">
-            </main>
+            <main class="posts-wrapper"></main>
 
             <template id="template">
                 <section class="post">
@@ -33,7 +32,7 @@
                             <p class="likes-number"></p>
                         </div>
                         <div class="comments-box">
-                            <p class="comment"> <a></a></p>
+                            <p class="comment"><a class="comment-username"></a><span class="comment-message"></span></p>
                         </div>
                     </div>
                 </section>
