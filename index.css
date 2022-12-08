@@ -84,6 +84,12 @@ header {
     width: 20px;
 }
 
+.like-btn:hover,
+.comment-btn:hover,
+.share-btn:hover {
+    opacity: 0.5;
+}
+
 .likes-number {
     margin: 5px 0;
     font-weight: 700;
