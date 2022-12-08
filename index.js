@@ -34,38 +34,18 @@ const posts = [
     }
 ]
 
-const postTemplate = `
-    <section class="post">
-        <div class="post-author-container">
-            <img class="avatar-img" id="avatar-img" src="images/avatar-courbet.jpg" alt="avatar image of the post author">
-            <div class="author-info">
-                <h4 class="avatar-name" id="author-name">Marcus Alonso</h4>
-                <p class="post-location" id="post-location">Bali, Indonesia</p>
-            </div>
-        </div>
-        <div class="post-img-container">
-            <img class="post-img" id="post-img" src="images/post-vangogh.jpg" alt="post image">
-        </div>
-        <div class="post-info">
-            <div class="share-box">
-                <img class="like-btn" src="images/icon-heart.png" alt="like button">
-                <img class="comment-btn" src="images/icon-comment.png" alt="comment button">
-                <img class="share-btn" src="images/icon-dm.png" alt="share button">
-            </div>
-            <div class="likes-num-box">
-                <p class="likes-number" id="likes-number">666 Likes</p>
-            </div>
-            <div class="comments-box">
-                <p class="comment"> <a href="" id="comment-username">googoolTala</a> Your work is Amazing</p>
-            </div>
-        </div>
-    </section>
-`
+//Elements for populating the posts
 const template = document.querySelector('#template');
 const clone = template.content.cloneNode(true);
 const postEl = clone.querySelector('.post');
 const postsWrapperEl = document.querySelector('.posts-wrapper');
 
+//Keep count of the num of posts - useful for creating unique id for posts and elements for their buttons
+let postsCounter = 1;
+let LikesBtnsElements = []; //this array will be used in a for loop to dynamically generate variable names for the like btn elemens
+let liked = false; //indicate whether the like button has been clicked
+
+//Populate posts in the HTML structure
 posts.forEach(p => {
     //create a clone of the post element
     let newClone = postEl.cloneNode(true);
@@ -86,6 +66,47 @@ posts.forEach(p => {
     newClone.querySelector('.comment-username').setAttribute('href', `https://instagram.com/${p.username}`);
     newClone.querySelector('.comment-username').textContent = p.username;
 
+    //add unique id for like, comment, and share buttons
+    newClone.querySelector('.like-btn').setAttribute('id', `like-btn-${postsCounter}`);
+    newClone.querySelector('.comment-btn').setAttribute('id', `comment-btn-${postsCounter}`);
+    newClone.querySelector('.share-btn').setAttribute('id', `share-btn-${postsCounter}`);
+    //add unique id for the number of likes elements
+    newClone.querySelector('.likes-number').setAttribute('id', `likes-number-${postsCounter}`);
+    //increment the post counter
+    postsCounter++;
+
     //Append the populated post to HTML
     postsWrapperEl.append(newClone);
-  });
+});
+
+function handleLikeElements() {
+    for(let i = 1; i < postsCounter; i++) {
+        //generate dynamic Like button elements based on the number of posts
+        this['LikeBtn'+i] = document.querySelector('#like-btn-'+i);
+        
+        //Add event listeners for clicks on like buttons
+        this['LikeBtn'+i].addEventListener('click', () => {
+            if(liked == true) {
+                //change the like button color to red
+                this['LikeBtn'+i].setAttribute('src', "images/icon-heart.png");
+                liked = false;
+                //decrement the number of likes in the page
+                document.querySelector('#likes-number-'+i).textContent = `${--posts[i-1].likes} Likes`;
+            }
+            else {
+                //change the like button color to default
+                this['LikeBtn'+i].setAttribute('src', "images/icon-red-heart.png");
+                liked = true;
+                //increment the number of likes in the page
+                document.querySelector('#likes-number-'+i).textContent = `${++posts[i-1].likes} Likes`;
+            }
+        });
+
+        //No need for comment and share elements. Maybe I implement something in the future updates. 
+        //this['CommentBtn'+i] = document.querySelector('#comment-btn-'+i);
+        //this['ShareBtn'+i] = document.querySelector('#share-btn-'+i);
+    }
+}
+handleLikeElements();
+
+
