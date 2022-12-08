@@ -64,10 +64,10 @@ const postTemplate = `
 const template = document.querySelector('#template');
 const clone = template.content.cloneNode(true);
 const postEl = clone.querySelector('.post');
-
 const postsWrapperEl = document.querySelector('.posts-wrapper');
 
 posts.forEach(p => {
+    //create a clone of the post element
     let newClone = postEl.cloneNode(true);
 
     //avatar image, alt description, post name, and location
@@ -86,20 +86,6 @@ posts.forEach(p => {
     newClone.querySelector('.comment-username').setAttribute('href', `https://instagram.com/${p.username}`);
     newClone.querySelector('.comment-username').textContent = p.username;
 
-
+    //Append the populated post to HTML
     postsWrapperEl.append(newClone);
-  })
-
-const mainEl = document.querySelector("#main");
-const authorName = document.querySelector("author-name");
-const postLocation = document.getElementById("post-location");
-const avatarImg = document.getElementById("avatar-img");
-const postImg = document.getElementById("post-img");
-const likesNumber = document.getElementById("likes-number");
-const comment = document.getElementById("comment");
-const commentUsername = document.getElementById("comment-username");
-
-posts.forEach(post => {
-    //mainEl.innerHTML += postTemplate;
-    //authorName.innerHTML = `${posts[i].name}`;
-});
+  });
