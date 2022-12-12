@@ -11,6 +11,17 @@ const posts = [
         likes: 21
     },
     {
+        name: "Amir Sabagh",
+        username: "arsenicolos",
+        location: "Toronto, Canada",
+        avatar: "images/avatar-amir.png",
+        avatarAlt: "an avatar portrait of the man himslef Amir Sabagh",
+        post: "images/post-amir.png",
+        postAlt: "a portrait of Amir Sabagh",
+        comment: "You seem to be a likeable person. Let's make friends!",
+        likes: 1
+    },
+    {
         name: "Gustave Courbet",
         username: "gus1819",
         location: "Ornans, France",
@@ -21,7 +32,7 @@ const posts = [
         comment: "i'm feelin a bit stressed tbh",
         likes: 4
     },
-        {
+    {
         name: "Joseph Ducreux",
         username: "jd1735",
         location: "Paris, France",
