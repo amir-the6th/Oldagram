@@ -76,7 +76,7 @@ posts.forEach(p => {
 
     
     //likes number, comment author, and the comment message
-    newClone.querySelector('.likes-number').textContent = localStorage.getItem(`post-${p.id}-likes`) + " Likes";
+    newClone.querySelector('.likes-number').textContent = localStorage.getItem(`post-${p.id}-likes`) + " Likes"; //get the current like num from localStorage
     newClone.querySelector('.comment-message').textContent = p.comment;
     newClone.querySelector('.comment-username').setAttribute('href', `https://instagram.com/${p.username}`);
     newClone.querySelector('.comment-username').textContent = p.username;
@@ -96,9 +96,9 @@ posts.forEach(p => {
     //generate dynamic Like button elements based on the number of posts
     this['LikeBtn'+p.id] = document.querySelector('#like-btn-'+p.id);
     
-    //save the likes num for each post in localStorage
+    //set the like icon based on the liked status in localStorage
     let likeButtonIconSrc = "";
-    if(localStorage.getItem(`post-${p.id}-liked`))
+    if(localStorage.getItem(`post-${p.id}-liked`) === "true")
         likeButtonIconSrc = "images/icon-red-heart.png";
     else
         likeButtonIconSrc = "images/icon-heart.png";
@@ -109,6 +109,7 @@ posts.forEach(p => {
     //Add event listeners for clicks on like buttons
     this['LikeBtn'+p.id].addEventListener('click', () => {
         if(liked == true) {
+            //set the liked status in localStorage to false
             localStorage.setItem(`post-${p.id}-liked`, false);
             //change the like button color to red
             this['LikeBtn'+p.id].setAttribute('src', "images/icon-heart.png");
@@ -120,6 +121,7 @@ posts.forEach(p => {
             document.querySelector('#likes-number-'+p.id).textContent =  `${p.likes} Likes`;
         }
         else {
+            //set the liked status in localStorage to true            
             localStorage.setItem(`post-${p.id}-liked`, true);
             //change the like button color to default
             this['LikeBtn'+p.id].setAttribute('src', "images/icon-red-heart.png");
@@ -131,35 +133,8 @@ posts.forEach(p => {
             document.querySelector('#likes-number-'+p.id).textContent = `${p.likes} Likes`;
         }
     });
+    //No need for comment and share elements. Maybe I implement something in the future updates. 
+    //this['CommentBtn'+i] = document.querySelector('#comment-btn-'+i);
+    //this['ShareBtn'+i] = document.querySelector('#share-btn-'+i);
 });
-
-//Handle click on like buttons
-// for(let i = 1; i < postsCounter; i++) {
-//     //generate dynamic Like button elements based on the number of posts
-//     this['LikeBtn'+i] = document.querySelector('#like-btn-'+i);
-    
-//     //Add event listeners for clicks on like buttons
-//     this['LikeBtn'+i].addEventListener('click', () => {
-//         if(liked == true) {
-//             //change the like button color to red
-//             this['LikeBtn'+i].setAttribute('src', "images/icon-heart.png");
-//             //set liked state to false
-//             liked = false;
-//             //set the localStorage to save the likes num
-//             localStorage.setItem(('#likes-number-'+i), `${--posts[i-1].likes}`);
-//             //decrement the number of likes in the page
-//             document.querySelector('#likes-number-'+i).textContent =  localStorage.getItem('#likes-number-'+i) +" Likes";
-//         }
-//         else {
-//             //change the like button color to default
-//             this['LikeBtn'+i].setAttribute('src', "images/icon-red-heart.png");
-//             liked = true;
-//             //increment the number of likes in the page
-//             document.querySelector('#likes-number-'+i).textContent = `${++posts[i-1].likes} Likes`;
-//         }
-//     });
-//     //No need for comment and share elements. Maybe I implement something in the future updates. 
-//     //this['CommentBtn'+i] = document.querySelector('#comment-btn-'+i);
-//     //this['ShareBtn'+i] = document.querySelector('#share-btn-'+i);
-// }
 
