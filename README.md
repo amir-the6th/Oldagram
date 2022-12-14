@@ -16,16 +16,7 @@ Fun features:
     - Like posts
     - The number of likes for the posts gets updated on click and saved to the localStorage 
     - Like button icon change on click
-- My main missions for this project were as follows:
-    1. Efficiently populate posts from the `posts` array of objects without extra HTML code:
-        - Defined a template structure in my HTML and used it in the JavaScript code to populate the posts
-        - Dynamically generated selectors with unique ids based on the number of posts. e.g. `this['likeBtn'+p.id] = document.querySelector('#like-btn-'+p.id);`
-    2. Store the number of likes for the posts so they won't reset on page refresh
-        - Benefited from localStorage to set key values for the number of likes and the liked state
-    3. Implement a UI similar to Instagram's
-        - Extra feature: Animated gradient background
-- I built this project from scratch and added more functionalities than what was asked. 
-- Hope you like it! Feel free to suggestion corrections and fixes to my code 🙌🏼 
+    - Animated gradient background
 
 ## Table of contents
 
@@ -53,7 +44,6 @@ https://user-images.githubusercontent.com/69528025/207675731-46bcb785-2486-4eab-
 ### Screenshot
 
 ![screenshot](./screenshot.png)
-<img src="./screenshot.png" alt="screenshot" style="width:400px;"/>
 
 ## My process
 
@@ -65,17 +55,16 @@ https://user-images.githubusercontent.com/69528025/207675731-46bcb785-2486-4eab-
 
 ### What I learned
 
-The only difficult part of this challenge was adding responsiveness. 
-
-I struggled to set the width of the columns to 100% on tablets and mobiles. 
-
-During learning how to fix this, I learned about these definitions:
-- `flex-grow`
-- `flex-shrink`
-- `flex-basis`
-- `width: max-content`
-
-Overall, I enjoyed my time working on this project. CSS can become quite challenging, but when learned the right way, any challenge can be tackled easily.
+- My main missions for this project were as follows:
+    1. Efficiently populate posts from the `posts` array of objects without extra HTML code:
+        - Defined a template structure in my HTML and used it in the JavaScript code to populate the posts
+        - Dynamically generated selectors with unique ids based on the number of posts. e.g. `this['likeBtn'+p.id] = document.querySelector('#like-btn-'+p.id);`
+    2. Store the number of likes for the posts so they won't reset on page refresh
+        - Benefited from localStorage to set key values for the number of likes and the liked state
+    3. Implement a UI similar to Instagram's
+        - Extra feature: Animated gradient background
+- I built this project from scratch and added more functionalities than what was asked. 
+- Hope you like it! Feel free to suggest corrections to my code 🙌🏼 
 
 ## Author
 
@@ -85,4 +74,4 @@ Overall, I enjoyed my time working on this project. CSS can become quite challen
 
 ## Acknowledgments
 
-I want to give a shout-out to the [Scrimba](https://scrimba.com) CEO and professor, Per Harald Borgen([@perborgen](https://github.com/perborgen)). I recently finished the [HTML and CSS](https://scrimba.com/learn/htmlandcss) course on Scrimba and am currently doing the follow-up course, [Learn JavaScript for Free](https://scrimba.com/learn/learnjavascript).
+I want to give a shout-out to the [@Scrimba](https://github.com/scrimba) CEO and professor, Per Harald Borgen([@perborgen](https://github.com/perborgen)). I am currently pursuing [The Frontend Developer Career Path](https://scrimba.com/learn/frontend) at Scrimba.
