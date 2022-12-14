@@ -76,7 +76,7 @@ posts.forEach(p => {
 
     
     //likes number, comment author, and the comment message
-    newClone.querySelector('.likes-number').textContent = localStorage.getItem(`post-${p.id}-likes`) + " Likes"; //get the current like num from localStorage
+    newClone.querySelector('.likes-number').textContent = (localStorage.hasOwnProperty(`post-${p.id}-likes`) ? localStorage.getItem(`post-${p.id}-likes`) : p.likes) + " Likes"; //get the current like num from localStorage
     newClone.querySelector('.comment-message').textContent = p.comment;
     newClone.querySelector('.comment-username').setAttribute('href', `https://instagram.com/${p.username}`);
     newClone.querySelector('.comment-username').textContent = p.username;
