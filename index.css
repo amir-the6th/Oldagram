@@ -19,6 +19,10 @@ header {
     border-radius: 10px 10px 0 0;
 }
 
+img {
+    pointer-events: none;
+}
+
 .main-wrapper {
     width: 375px;
     margin: 5em auto 0;
