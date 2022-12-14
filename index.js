@@ -55,11 +55,13 @@ const clone = template.content.cloneNode(true);
 const postEl = clone.querySelector('.post');
 const postsWrapperEl = document.querySelector('.posts-wrapper');
 
-//Keep count of the num of posts - useful for creating unique id for posts and elements for their buttons
-let LikesBtnsElements = []; //this array will be used in a for loop to dynamically generate variable names for the like btn elemens
 let liked = false; //indicate whether the like button has been clicked
 
-//Populate posts in the HTML structure
+/*Populate posts in the HTML structure
+    Logic:
+    - create the necessary attributes such as `id`, `src`, and `alt` for the HTML elements.
+    - populate those elements with data from the posts array of objects and localStorage (for the number of likes)
+*/
 posts.forEach(p => {
     //create a clone of the post element
     let newClone = postEl.cloneNode(true);
@@ -75,9 +77,11 @@ posts.forEach(p => {
     newClone.querySelector('.post-img').setAttribute('alt', p.postAlt);
 
     
-    //likes number, comment author, and the comment message
-    newClone.querySelector('.likes-number').textContent = (localStorage.hasOwnProperty(`post-${p.id}-likes`) ? localStorage.getItem(`post-${p.id}-likes`) : p.likes) + " Likes"; //get the current like num from localStorage
+    //get the current number of likes from localStorage. if localStorage is not set, retrieve it from the original array 
+    newClone.querySelector('.likes-number').textContent = (localStorage.hasOwnProperty(`post-${p.id}-likes`) ? localStorage.getItem(`post-${p.id}-likes`) : p.likes) + " Likes";
+    //comment message
     newClone.querySelector('.comment-message').textContent = p.comment;
+    //comment author
     newClone.querySelector('.comment-username').setAttribute('href', `https://instagram.com/${p.username}`);
     newClone.querySelector('.comment-username').textContent = p.username;
 
@@ -92,11 +96,16 @@ posts.forEach(p => {
     postsWrapperEl.append(newClone);
 });
 
+/* 
+Handle the like button of the posts
+    Note: I had to use another forEach because `this['LikeBtn'+p.id]` could not find and get the element. 
+    Logic: loop through the posts once and set their attributes. Then, do another loop and this time and retrieve the elements.
+*/
 posts.forEach(p => {
     //generate dynamic Like button elements based on the number of posts
     this['LikeBtn'+p.id] = document.querySelector('#like-btn-'+p.id);
     
-    //set the like icon based on the liked status in localStorage
+    //set the like button icon based on the liked status in localStorage
     let likeButtonIconSrc = "";
     if(localStorage.getItem(`post-${p.id}-liked`) === "true")
         likeButtonIconSrc = "images/icon-red-heart.png";
