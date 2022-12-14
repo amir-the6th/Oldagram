@@ -55,8 +55,6 @@ const clone = template.content.cloneNode(true);
 const postEl = clone.querySelector('.post');
 const postsWrapperEl = document.querySelector('.posts-wrapper');
 
-let liked = false; //indicate whether the like button has been clicked
-
 /*Populate posts in the HTML structure
     Logic:
     - create the necessary attributes such as `id`, `src`, and `alt` for the HTML elements.
@@ -98,12 +96,15 @@ posts.forEach(p => {
 
 /* 
 Handle the like button of the posts
-    Note: I had to use another forEach because `this['LikeBtn'+p.id]` could not find and get the element. 
+    Note: I had to use another forEach because `this['likeBtn'+p.id]` could not find and get the element. 
     Logic: loop through the posts once and set their attributes. Then, do another loop and this time and retrieve the elements.
 */
 posts.forEach(p => {
     //generate dynamic Like button elements based on the number of posts
-    this['LikeBtn'+p.id] = document.querySelector('#like-btn-'+p.id);
+    this['likeBtn'+p.id] = document.querySelector('#like-btn-'+p.id);
+
+    //generate dynamic like states for each post
+    this['likedState'+p.id] = false; //indicate whether the like button has been clicked
     
     //set the like button icon based on the liked status in localStorage
     let likeButtonIconSrc = "";
@@ -112,18 +113,18 @@ posts.forEach(p => {
     else
         likeButtonIconSrc = "images/icon-heart.png";
 
-    this['LikeBtn'+p.id].setAttribute('src', likeButtonIconSrc);
+    this['likeBtn'+p.id].setAttribute('src', likeButtonIconSrc);
 
 
     //Add event listeners for clicks on like buttons
-    this['LikeBtn'+p.id].addEventListener('click', () => {
-        if(liked == true) {
+    this['likeBtn'+p.id].addEventListener('click', () => {
+        if(this['likedState'+p.id] == true) {
             //set the liked status in localStorage to false
             localStorage.setItem(`post-${p.id}-liked`, false);
             //change the like button color to red
-            this['LikeBtn'+p.id].setAttribute('src', "images/icon-heart.png");
+            this['likeBtn'+p.id].setAttribute('src', "images/icon-heart.png");
             //set liked state to false
-            liked = false;
+            this['likedState'+p.id] = false;
             //set the localStorage to save the likes num
             localStorage.setItem(`post-${p.id}-likes`, --p.likes);
             //display the number of likes in the page
@@ -133,9 +134,9 @@ posts.forEach(p => {
             //set the liked status in localStorage to true            
             localStorage.setItem(`post-${p.id}-liked`, true);
             //change the like button color to default
-            this['LikeBtn'+p.id].setAttribute('src', "images/icon-red-heart.png");
+            this['likeBtn'+p.id].setAttribute('src', "images/icon-red-heart.png");
             //set liked state to true
-            liked = true;
+            this['likedState'+p.id] = true;
             //set the localStorage to save the likes num
             localStorage.setItem(`post-${p.id}-likes`, ++p.likes);            
             //display the number of likes in the page
